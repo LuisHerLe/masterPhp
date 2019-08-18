@@ -289,21 +289,61 @@ echo "<br>";
 
 ?>
 
+<hr/>
+
+<h1>Estructuras de Control</h1>
+<h2>Switch - Case</h2>
+<?php
+$dia=8;
+switch ($dia){
+	case 1:
+		echo 'Lunes';
+		break;
+	case 2: 
+		echo "Martes";
+		break;
+	case 3: 
+		echo "Miercoles";
+		break;
+	case 4:
+		echo "Jueves";
+		break;
+	case 5:
+		echo "Viernes";
+		break;
+	default:
+		echo "Fin de semana";
+}
+?>
+<br/>
+<h2>Go To</h2>
+<?php
+
+//El GOTO se usa para iniciar el código a partir de una marca indicada
+	goto marca;
+	echo "Marca 1";
+	echo "Marca 2";
+	echo "Marca 3";
+	echo "Marca 4";
+	echo "Marca 5";
+
+marca:
+	echo "Me salté 5 echos";
 
 
-<h1>Bucles</h1>
+?>
+<h2>Bucles</h2>
 <?php
 	
-	/* CONDICIONALES
-	if(condicion)
-	{
-
-	}else{
-
+// While
+$conteo=1;
+while ($conteo<= 20 ) {
+	echo $conteo;	
+	if ($conteo!=20) {
+		echo ", ";
 	}
-
-	$_GET
-	*/
+	$conteo++;
+}
 
 ?>
 
