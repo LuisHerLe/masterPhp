@@ -240,6 +240,13 @@
 	<= Menor o igual que
 	> Mayor que
 	>= Mayor o igual que
+
+		********** OPERADORES LÓGICOS: **********
+
+	&& and
+	|| or
+	! not no
+	and, or -- Normalmente no se usan
 */
 
 	$color= 'rojo';
