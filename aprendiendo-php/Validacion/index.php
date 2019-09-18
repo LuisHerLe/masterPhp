@@ -7,6 +7,20 @@
     </head>
     <body>
         <h1>Validar formularios en PHP</h1>
+        
+        <!-- Div de error de datos-->
+        <div id="error">
+            <?php
+                if(isset($_GET['error'])){
+                    $error = $_GET['error'];
+                    if($error=='Faltan datos'){
+                        echo '<strong style="color:red">Error de datos, favor no dejar campos en blanco</strong>';                    
+                    }elseif ($_GET['error']!="ok") {       
+                        echo '<strong style="color:red">Error de datos, favor revisar ' . $_GET['error'] . '</strong>';
+                    }
+                }
+            ?>
+        </div>
         <!--Crear un nuevo formulario-->
         <div>
             <form action="procesar.php" method="POST">
