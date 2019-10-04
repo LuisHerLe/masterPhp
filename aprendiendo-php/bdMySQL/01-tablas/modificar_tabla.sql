@@ -11,4 +11,7 @@ ALTER TABLE usuarios MODIFY s_contrasena char(40);
 ALTER TABLE usuarios ADD website varchar(100) not null;
 
 # Añadir restricción a columna
-ALTER TABLE usuarios ADD CONSTRAINT uq_email UNIQUE(email);
+ALTER TABLE usuarios ADD CONSTRAINT uq_email UNIQUE(s_email);
+
+# Eliminar columna
+ALTER TABLE usuarios DROP column s_email;
