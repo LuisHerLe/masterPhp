@@ -1,8 +1,40 @@
-<?php require_once 'includes/ayudas.php'; ?>
+
 
 <ASIDE id="sidebar">
+    
+    <DIV id="buscador" class="bloque">
+        <h3>Buscar</h3>
+   
+        <FORM action="buscar.php" method="POST">
+            <INPUT type="text" name="busqueda"/>
+
+            <INPUT type="submit" value="Buscar"/>
+        </FORM>
+    </DIV>
+
+    <!--Div que solo se muestra cuando se esté logueado-->
+    <?php if (isset($_SESSION['usuario'])): ?>
+        <div id= "usuario-loqueado" class="bloque">
+            <h3>Bienvenido <?= $_SESSION['usuario']['s_nombre'] . ' ' . $_SESSION['usuario']['s_apellidos']; ?> </h3>
+            <!--Botones-->
+            <a href="crearEntradas.php" class="boton boton-verde">Crear entradas</a>
+            <a href="crearCategoria.php" class="boton">Crear categoría</a>
+            <a href="misDatos.php" class="boton boton-naranja">Mis datos</a>
+            <a href="cerrar.php" class="boton boton-rojo">Cerrar Sesión</a>
+            
+        </div>
+    <?php endif; ?>
+
+    <?php if (!isset($_SESSION['usuario'])): ?>
+    
     <DIV id="login" class="bloque">
         <h3>Identifícate</h3>
+        <?php if (isset($_SESSION['error_login'])): ?>
+            <div id= "usuario-error" class="alerta alerta-error">
+                <h5><?= $_SESSION['error_login'] ?></h5>
+            </div>
+        <?php endif; ?>
+
         <FORM action="login.php" method="POST">
             <LABEL for="email">email</LABEL>
             <INPUT type="email" name="email"/>
@@ -18,15 +50,15 @@
 
         <h3>Regístrate</h3>
 
-         <!--Mostrar errores--> 
+        <!--Mostrar errores--> 
         <?php if (isset($_SESSION['completado'])): ?>
             <div class="alerta alerta-exito">
                 <?= $_SESSION['completado'] ?>
             </div>
-        <?php elseif(isset($_SESSION['errores']['general'])): ?>
-        <div class="alerta alerta-error">
-            <?=$_SESSION['errores']['general']?>
-        </div>
+        <?php elseif (isset($_SESSION['errores']['general'])): ?>
+            <div class="alerta alerta-error">
+                <?= $_SESSION['errores']['general'] ?>
+            </div>
         <?php endif; ?>
 
         <FORM action="registro.php" method="POST">
@@ -49,5 +81,6 @@
         </FORM>
         <?php echo borrarErrores(); ?>
     </DIV>
+    <?php endif;?>
 </ASIDE>
 

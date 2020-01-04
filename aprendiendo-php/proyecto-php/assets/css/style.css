@@ -260,3 +260,15 @@ input[type="submit"],
     padding: 15px;
     text-align: center;
 }
+
+/*Personal Luifo*/
+
+/*Crear Categorías*/
+.hgroup{
+    box-shadow: 2px 2px 2px 1px rgba(100, 10, 10, 0.1);
+    margin-bottom: 20px;
+}
+
+.formCategoria input:nth-child(2){
+    width: 35%;
+}

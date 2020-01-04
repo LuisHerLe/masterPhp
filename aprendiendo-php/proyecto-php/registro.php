@@ -5,15 +5,16 @@ if (isset($_POST)) {
     require_once 'includes/conexion.php';
 
 //Iniciar sesión
-    if(isset($_SESSION)){
+    if(!isset($_SESSION)){
+        
         session_start();
     }    
 
     //Validar valores nulos en las variables
-    $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : false;
-    $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
-    $email = isset($_POST['email']) ? $_POST['email'] : false;
-    $password = isset($_POST['password']) ? $_POST['password'] : false;
+    $nombre = isset($_POST['nombre']) ? mysqli_real_escape_string($db, $_POST['nombre']) : false;
+    $apellidos = isset($_POST['apellidos']) ? mysqli_real_escape_string($db, $_POST['apellidos']) : false;
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($db, trim($_POST['email'])) : false;
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
 
     //Array de errores
     $errores = array();

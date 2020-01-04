@@ -9,74 +9,31 @@ include_once 'includes/cabecera.php';
 
 <DIV id="principal">
     <h1>Últimas entradas</h1>
-    <ARTICLE class="entrada">
-        <a href="">
-            <h2>Título de mi entrada</h2>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-        </a>
-    </ARTICLE>
 
-    <ARTICLE class="entrada">
-        <a href="">
-            <h2>Título de mi entrada</h2>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-        </a>
-    </ARTICLE>
+    <?php
+    $entradas = conseguirEntradas($db, true);
+    if (!empty($entradas)):
+        while($entrada = mysqli_fetch_assoc($entradas)):
+            ?>       
+            <ARTICLE class="entrada">
+                <a href="entrada.php?id=<?=$entrada['n_id']?>">
+                    <h2><?=$entrada['s_titulo'];?></h2>
+                    <span class="fecha"><?=$entrada['Categoría'].' | '.$entrada['d_fecha']; ?></span>
+                    <p>
+                        <?= substr($entrada['s_descripcion'], 0, 180). "..."?>
+                    </p>
+                </a>
+            </ARTICLE>
+            <?php
+        endwhile;
 
-    <ARTICLE class="entrada">
-        <a href="">
-            <h2>Título de mi entrada</h2>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-        </a>
-    </ARTICLE>
-
-    <ARTICLE class="entrada">
-        <a href="">
-            <h2>Título de mi entrada</h2>
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                It has survived not only five centuries, but also the leap into electronic typesetting, 
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset 
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-                Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-        </a>
-    </ARTICLE> 
-
+    endif;
+    ?>
     <DIV id="ver-todas">
-        <a href="">Ver todas las entradas</a>
+        <a href="entradas.php">Ver todas las entradas</a>
     </DIV>
 
-</DIV> <!-- Fin Principal -->       
-
-
-
+</DIV> <!-- Fin Principal --> 
 <!-- PIE DE PÁGINA y div contenedor-->
 <?php include_once 'includes/pie.php'; ?>
 </BODY>
