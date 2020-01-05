@@ -14,15 +14,23 @@ class NotaController {
         
         //Lógica acción controlador
         $nota = new Nota();
-        $nota->setNombre("Hola");
-        $nota->setContenido("Hola Mundo PHP MVC");
+                
+        $notas = $nota->conseguirTodos('notas');
         
+        //Vista
         require_once 'views/nota/listar.php';
         
     }
     
     public function crear(){
+        require_once 'models/Nota.php';
+        $nota = new Nota();
+        $nota->setUsuario_id(1);
+        $nota->setTitulo('Nota 5');
+        $nota->setDescripcion("Nota quinta desde Controller PHP MVC");
         
+        $guardar = $nota->guardar();
+        header("Location: index.php?controller=Nota&action=listar");
     }
     
     public function borrar(){

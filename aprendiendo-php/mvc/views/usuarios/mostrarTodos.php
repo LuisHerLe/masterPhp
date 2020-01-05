@@ -8,7 +8,12 @@
     por el modelo (cuando es un modelo activo que informa de los cambios en los datos producidos por otros agentes). 
  
  * @author Luis Hernandez<luifo2033@gmail.com>
- -->
+-->
 
-<h1><?=$todosLosUsuarios?></h1>
+<h1>Listar todos los usuarios</h1>
+
+<?php while ($usuario = $todosLosUsuarios->fetch_object()) : ?>
+    <p><?= $usuario->id ?>: <?= $usuario->nombre ?> <?= $usuario->apellidos ?></p>
+<?php endwhile; ?>
+
 

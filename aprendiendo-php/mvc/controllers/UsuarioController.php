@@ -22,7 +22,7 @@ class UsuarioController{
         require_once 'models/Usuario.php';
         
         $usuario = new Usuario();
-        $todosLosUsuarios = $usuario->conseguirTodos();
+        $todosLosUsuarios = $usuario->conseguirTodos('usuarios');
         
         //Se importan las vistas para que allí se usen los objetos que se creen aquí
         require_once 'views/usuarios/mostrarTodos.php';
