@@ -72,7 +72,7 @@ CREATE TABLE lineas_Pedidos(
 id              int(255) auto_increment not null,
 pedido_id       int(255) not null,
 producto_id     int(255) not null,
-CONSTRAINT pk_pedidos PRIMARY KEY(id),
+CONSTRAINT pk_lineas_Pedidos PRIMARY KEY(id),
 CONSTRAINT fk_lineaPedido_pedido FOREIGN KEY(pedido_id) REFERENCES pedidos(id),
 CONSTRAINT fk_lineaPedido_producto FOREIGN KEY(producto_id) REFERENCES productos(id)
 )ENGINE=InnoDb;
